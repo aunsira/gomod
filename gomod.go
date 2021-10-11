@@ -16,14 +16,14 @@ Example
 		log.Fatal(err)
 	}
 
-	closedQuestion, getClosedQuestion := &gomod.GetClosedQuestion{}, &actions.GetClosedQuestion{
+	Moderation, getModeration := &gomod.GetModeration{}, &actions.GetModeration{
 		ID: "5a52fb556e11571f570c1530",
 	}
 
-	if err := c.Call(closedQuestion, getClosedQuestion); err != nil {
+	if err := c.Call(Moderation, getModeration); err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("%#v\n", closedQuestion)
+	log.Printf("%#v\n", Moderation)
 
 We also provide Get "any type" Image endpoint API. You only supply project key and Image
 ID (or Customer ID) for reference.
