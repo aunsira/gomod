@@ -10,8 +10,8 @@ import (
 	"github.com/aunsira/gomod/actions"
 )
 
-// Client is like a API Gateway for K-Sequencing. Client will let you call available
-// K-Sequencing's APIs. It will be used with action structures from actions sub-package.
+// Client is like a API Gateway for Posmoni. Client will let you call available
+// Posmoni's APIs. It will be used with action structures from actions sub-package.
 type Client struct {
 	*http.Client
 	ProjectKey string
@@ -25,7 +25,7 @@ func NewClient(projectKey string) (*Client, error) {
 	return &Client{&http.Client{}, projectKey}, nil
 }
 
-// Call performs supplied operations against K-Sequencing's API and unmarshal response into
+// Call performs supplied operations against Posmoni's API and unmarshal response into
 // given action object.
 //
 // In successful case, result will contain 2 main objects, data and meta. (status code and

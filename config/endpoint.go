@@ -1,6 +1,6 @@
 package config
 
 const (
-	// PosmoniAPIURL represents the Kiyo-Image endpoint API.
+	// PosmoniAPIURL represents the Posmoni API Endpoint.
 	PosmoniAPIURL string = "https://api.posmoni.com"
 )

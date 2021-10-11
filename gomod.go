@@ -1,22 +1,22 @@
 /*
-Package kseq provides GO binding for K Sequencing REST API.
+Package gomod provides GO binding for Posmoni REST API.
 Full REST API documentation is available at https://datawow.readme.io/v1.0/reference.
 
 Usage
 
-Create a client with kseq.NewClient, along with supply your project key. After that, use
-client.Call with actions object from the https://godoc.org/github.com/datawowio/k-sequencing-go/actions
+Create a client with gomod.NewClient, along with supply your project key. After that, use
+client.Call with actions object from the https://godoc.org/github.com/aunsira/gomod/actions
 package to perform API calls. The first parameter to client.Call lets you supply a struct
 object from index that listed below to unmarshal the result.
 
 Example
 
-	c, err := kseq.NewClient(ProjectKey)
+	c, err := gomod.NewClient(ProjectKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	closedQuestion, getClosedQuestion := &kseq.GetClosedQuestion{}, &actions.GetClosedQuestion{
+	closedQuestion, getClosedQuestion := &gomod.GetClosedQuestion{}, &actions.GetClosedQuestion{
 		ID: "5a52fb556e11571f570c1530",
 	}
 
@@ -30,7 +30,7 @@ ID (or Customer ID) for reference.
 
 Example
 
-	c, err := kseq.NewClient(ProjectKey)
+	c, err := gomod.NewClient(ProjectKey)
 	if err != nil {
 		log.Fatal(err)
 	}

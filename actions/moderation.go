@@ -23,7 +23,7 @@ const (
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("AI Consensus: %#v\n", imgData)
+//  fmt.Printf("Moderation: %#v\n", imgData)
 //
 type GetModeration struct {
 	ID string
@@ -41,7 +41,7 @@ type GetModeration struct {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("AI Consensus: %#v\n", list)
+//  fmt.Printf("Moderation: %#v\n", list)
 //  fmt.Printf("First element: %#v\n", list.Data.Images[0])
 //
 type GetModerations struct {
@@ -60,7 +60,7 @@ type GetModerations struct {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("AI Consensus: %#v\n", imgData)
+//  fmt.Printf("Moderation: %#v\n", imgData)
 //
 type PostModeration struct {
 	Data           string
@@ -69,25 +69,24 @@ type PostModeration struct {
 	CustomID       string
 }
 
-// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get AI
-// Consensus API.
+// Endpoint returns Posmoni's request url, verb and endpoint for calling GET Moderation API.
 func (g *GetModeration) Endpoint() (string, string, string) {
-	return config.KiyoImageAPIURL, "GET", ModerationPath
+	return config.PosmoniAPIURL, "GET", ModerationPath
 }
 
-// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
-// AI Consensus API.
+// Endpoint returns Posmoni's request url, verb and endpoint for calling Get list of
+// Moderation API.
 func (g *GetModerations) Endpoint() (string, string, string) {
-	return config.KiyoImageAPIURL, "GET", ModerationPath
+	return config.PosmoniAPIURL, "GET", ModerationPath
 }
 
-// Endpoint returns K Sequencing's request url, verb and endpoint for calling Create AI
-// Consensus API.
+// Endpoint returns Posmoni's request url, verb and endpoint for calling Create
+// Moderation API.
 func (p *PostModeration) Endpoint() (string, string, string) {
-	return config.KiyoImageAPIURL, "POST", ModerationPath
+	return config.PosmoniAPIURL, "POST", ModerationPath
 }
 
-// Payload creates request's payload for Get AI Consensus API. Returns http.Request
+// Payload creates request's payload for Get Moderation API. Returns http.Request
 // object which contains required query parameters.
 func (g *GetModeration) Payload(endpoint, method, path string) (*http.Request, error) {
 	if g.ID == "" {
@@ -101,7 +100,7 @@ func (g *GetModeration) Payload(endpoint, method, path string) (*http.Request, e
 	return req, nil
 }
 
-// Payload creates request's payload for Get list AI Consensus API. Returns
+// Payload creates request's payload for Get list Moderation API. Returns
 // http.Request which contains required query parameters.
 func (g *GetModerations) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
@@ -122,7 +121,7 @@ func (g *GetModerations) Payload(endpoint, method, path string) (*http.Request, 
 	return req, nil
 }
 
-// Payload creates request's payload for Create AI Consensus API. Returns
+// Payload creates request's payload for Create Moderation API. Returns
 // http.Request which contains required query parameters.
 func (p *PostModeration) Payload(endpoint, method, path string) (*http.Request, error) {
 	values := url.Values{}

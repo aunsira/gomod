@@ -1,24 +1,24 @@
 package gomod
 
-// GetModeration represents the response object that returned from Get AI Consensus API.
+// GetModeration represents the response object that returned from Get Moderation API.
 type GetModeration struct {
 	Data ModerationData `json:"data"`
 	Meta Meta           `json:"meta"`
 }
 
-// GetModerations represents the response object that returned from Get List of AI Consensus API.
+// GetModerations represents the response object that returned from Get List of Moderation API.
 type GetModerations struct {
 	Data Moderations `json:"data"`
 	Meta Meta        `json:"meta"`
 }
 
-// PostModeration respresents the created object that returned from Create AI Consensus API.
+// PostModeration respresents the created object that returned from Create Moderation API.
 type PostModeration struct {
 	Data ModerationData `json:"data"`
 	Meta Meta           `json:"meta"`
 }
 
-// Moderation represents AI Consensus object.
+// Moderation represents Moderation object.
 type Moderation struct {
 	ID            string  `json:"id"`
 	Answer        string  `json:"answer"`
