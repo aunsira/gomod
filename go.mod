@@ -1,3 +1,3 @@
-module gomod
+module posmoni
 
 go 1.17
