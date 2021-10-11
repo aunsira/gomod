@@ -1,9 +1,9 @@
-package posmoni
+package gomod
 
 // GetModeration represents the response object that returned from Get Moderation API.
 type GetModeration struct {
-	Data ModerationData `json:"data"`
-	Meta Meta           `json:"meta"`
+	Data Moderation `json:"data"`
+	Meta Meta       `json:"meta"`
 }
 
 // GetModerations represents the response object that returned from Get List of Moderation API.
@@ -14,8 +14,8 @@ type GetModerations struct {
 
 // PostModeration respresents the created object that returned from Create Moderation API.
 type PostModeration struct {
-	Data ModerationData `json:"data"`
-	Meta Meta           `json:"meta"`
+	Data Moderation `json:"data"`
+	Meta Meta       `json:"meta"`
 }
 
 // Moderation represents Moderation object.
@@ -32,11 +32,4 @@ type Moderation struct {
 }
 
 // Moderations represents list of Moderation object.
-type Moderations struct {
-	Images []Moderation `json:"moderations"`
-}
-
-// ModerationData refers to Moderation object
-type ModerationData struct {
-	Image Moderation `json:"moderation"`
-}
+type Moderations []Moderation

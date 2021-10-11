@@ -52,4 +52,4 @@ Example
 	log.Println("Response code: " + meta["code"])
 
 */
-package posmoni
+package gomod

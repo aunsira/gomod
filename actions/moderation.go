@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/aunsira/posmoni/config"
+	"github.com/aunsira/gomod/config"
 )
 
 const (

@@ -1,4 +1,4 @@
-package posmoni
+package gomod
 
 // Meta represents the response status code and message after called APIs.
 type Meta struct {
