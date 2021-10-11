@@ -1,22 +1,22 @@
 /*
-Package gomod provides GO binding for Posmoni REST API.
+Package posmoni provides GO binding for Posmoni REST API.
 Full REST API documentation is available at https://datawow.readme.io/v1.0/reference.
 
 Usage
 
-Create a client with gomod.NewClient, along with supply your project key. After that, use
-client.Call with actions object from the https://godoc.org/github.com/aunsira/gomod/actions
+Create a client with posmoni.NewClient, along with supply your project key. After that, use
+client.Call with actions object from the https://godoc.org/github.com/aunsira/posmoni/actions
 package to perform API calls. The first parameter to client.Call lets you supply a struct
 object from index that listed below to unmarshal the result.
 
 Example
 
-	c, err := gomod.NewClient(ProjectKey)
+	c, err := posmoni.NewClient(ProjectKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	Moderation, getModeration := &gomod.GetModeration{}, &actions.GetModeration{
+	Moderation, getModeration := &posmoni.GetModeration{}, &actions.GetModeration{
 		ID: "5a52fb556e11571f570c1530",
 	}
 
@@ -30,7 +30,7 @@ ID (or Customer ID) for reference.
 
 Example
 
-	c, err := gomod.NewClient(ProjectKey)
+	c, err := posmoni.NewClient(ProjectKey)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,4 +52,4 @@ Example
 	log.Println("Response code: " + meta["code"])
 
 */
-package gomod
+package posmoni

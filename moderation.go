@@ -1,4 +1,4 @@
-package gomod
+package posmoni
 
 // GetModeration represents the response object that returned from Get Moderation API.
 type GetModeration struct {

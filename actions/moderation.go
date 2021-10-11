@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/aunsira/gomod/config"
+	"github.com/aunsira/posmoni/config"
 )
 
 const (
@@ -15,7 +15,7 @@ const (
 
 // Example:
 //
-//  imgData, get := &gomod.GetModeration{}, &actions.GetModeration{
+//  imgData, get := &posmoni.GetModeration{}, &actions.GetModeration{
 //      ID: "5a546e916e11571f570c1533",
 //  }
 //
@@ -31,7 +31,7 @@ type GetModeration struct {
 
 // Example:
 //
-//  list, get := &gomod.GetModerations{}, &actions.GetModerations{
+//  list, get := &posmoni.GetModerations{}, &actions.GetModerations{
 //      ID: "5a546e916e11571f570c1533",
 //      Page: 1,
 //      Item: 20,
@@ -52,7 +52,7 @@ type GetModerations struct {
 
 // Example:
 //
-//  imgData, post := &gomod.PostModeration{}, &actions.PostModeration{
+//  imgData, post := &posmoni.PostModeration{}, &actions.PostModeration{
 //		Data: TestImageDataURL,
 //  }
 //

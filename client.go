@@ -1,4 +1,4 @@
-package gomod
+package posmoni
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/aunsira/gomod/actions"
+	"github.com/aunsira/posmoni/actions"
 )
 
 // Client is like a API Gateway for Posmoni. Client will let you call available
