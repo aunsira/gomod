@@ -124,7 +124,7 @@ func TestClient_CallPostClosedQuestion(t *testing.T) {
 	}
 
 	a.NotNil(t, pq)
-	a.Equal(t, postCQ.Data, pq.Data.Source)
+	a.Equal(t, postCQ.Data, pq.Data.Attributes.Source)
 }
 
 func TestClient_InvalidCall(t *testing.T) {
