@@ -1,11 +1,5 @@
 package gomod
 
-// GetModeration represents the response object that returned from Get Moderation API.
-type GetModeration struct {
-	Data Moderation `json:"data"`
-	Meta Meta       `json:"meta"`
-}
-
 // GetModerations represents the response object that returned from Get List of Moderation API.
 type GetModerations struct {
 	Data Moderations `json:"data"`
@@ -28,6 +22,7 @@ type Moderation struct {
 // Moderations represents list of Moderation object.
 type Moderations []Moderation
 
+// ModerationAttributes represents available attributes of Moderation
 type ModerationAttributes struct {
 	Answer         string `json:"answer"`
 	CustomID       string `json:"custom_id"`

@@ -1,5 +1,3 @@
-github.com/datawowio/k-sequencing-go v0.0.0-20190227041527-00aff8ef3659 h1:da7p7z5Y9TpOzcvT7/arwya5x9M9a3ULglZQLkDeJUA=
-github.com/datawowio/k-sequencing-go v0.0.0-20190227041527-00aff8ef3659/go.mod h1:aWjJtdrxG50wMn9gFQkRuugZbpvhUEQPBkCIGGFrEBw=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/h2non/parth v0.0.0-20190131123155-b4df798d6542 h1:2VTzZjLZBgl62/EtslCrtky5vbi9dd7HrQPQIx6wqiw=
