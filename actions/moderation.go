@@ -1,7 +1,6 @@
 package actions
 
 import (
-	"errors"
 	"net/http"
 	"net/url"
 	"strings"
@@ -89,14 +88,15 @@ func (p *PostModeration) Endpoint() (string, string, string) {
 // Payload creates request's payload for Get Moderation API. Returns http.Request
 // object which contains required query parameters.
 func (g *GetModeration) Payload(endpoint, method, path string) (*http.Request, error) {
-	if g.ID == "" {
-		return nil, errors.New("ID is required ")
-	}
-
-	req, err := http.NewRequest(method, string(endpoint)+path+"/"+g.ID, nil)
+	req, err := http.NewRequest(method, string(endpoint)+path, nil)
 	if err != nil {
 		return nil, err
 	}
+	q := req.URL.Query()
+	if g.ID != "" {
+		q.Add("query", g.ID)
+	}
+	req.URL.RawQuery = q.Encode()
 	return req, nil
 }
 
@@ -109,7 +109,7 @@ func (g *GetModerations) Payload(endpoint, method, path string) (*http.Request, 
 	}
 	q := req.URL.Query()
 	if g.ID != "" {
-		q.Add("id", g.ID)
+		q.Add("query", g.ID)
 	}
 	if g.Page != "" {
 		q.Add("page", g.Page)
