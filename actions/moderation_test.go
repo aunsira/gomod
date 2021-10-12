@@ -46,7 +46,8 @@ func TestGetModerationPayload(t *testing.T) {
 	}
 	endpoint, method, path := g.Endpoint()
 	req, _ := g.Payload(endpoint, method, path)
-	a.Equal(t, req.URL.Path, path+"/5a44671ab3957c2ab5c33326")
+	queryValues := req.URL.Query()
+	a.Equal(t, g.ID, queryValues.Get("query"))
 }
 
 func TestGetListModerationPayload(t *testing.T) {
@@ -58,7 +59,7 @@ func TestGetListModerationPayload(t *testing.T) {
 	endpoint, method, path := g.Endpoint()
 	req, _ := g.Payload(endpoint, method, path)
 	queryValues := req.URL.Query()
-	a.Equal(t, g.ID, queryValues.Get("id"))
+	a.Equal(t, g.ID, queryValues.Get("query"))
 	a.Equal(t, g.Item, queryValues.Get("per_page"))
 	a.Equal(t, g.Page, queryValues.Get("page"))
 }
