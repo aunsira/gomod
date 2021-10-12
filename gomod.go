@@ -16,7 +16,7 @@ Example
 		log.Fatal(err)
 	}
 
-	Moderation, getModeration := &posmoni.GetModeration{}, &actions.GetModeration{
+	Moderation, getModeration := &posmoni.GetModerations{}, &actions.GetModerations{
 		ID: "5a52fb556e11571f570c1530",
 	}
 
@@ -34,22 +34,20 @@ Example
 	if err != nil {
 		log.Fatal(err)
 	}
-	resp := make(map[string]interface{})
 
-	getImage := &actions.GetImage{
-		ID: "5a52fb556e11571f570c1530",
+	var resp map[string]interface{}
+
+	getModerations := &actions.GetModerations{
+		ID: "61651d8f3a96703f9768a124",
 	}
 
-	if err := c.Call(&resp, getImage); err != nil {
+	if err := c.Call(&resp, getModerations); err != nil {
 		log.Fatal(err)
 	}
 
 	data := resp["data"].(map[string]interface{})
-	meta := resp["meta"].(map[string]interface{})
-	image := data["image"].(map[string]interface{})
-	log.Println("Image ID: " + image["id"])
-	log.Println("Image Status: " + image["status"])
-	log.Println("Response code: " + meta["code"])
+	attrs := data["attributes"].(map[string]interface{})
+	log.Println(attrs["answer"])
 
 */
 package gomod

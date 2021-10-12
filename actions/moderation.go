@@ -14,24 +14,7 @@ const (
 
 // Example:
 //
-//  imgData, get := &posmoni.GetModeration{}, &actions.GetModeration{
-//      ID: "5a546e916e11571f570c1533",
-//  }
-//
-//  if err := client.Call(imgData, get); err != nil {
-//      log.Fatal(err)
-//  }
-//
-//  fmt.Printf("Moderation: %#v\n", imgData)
-//
-type GetModeration struct {
-	ID string
-}
-
-// Example:
-//
 //  list, get := &posmoni.GetModerations{}, &actions.GetModerations{
-//      ID: "5a546e916e11571f570c1533",
 //      Page: 1,
 //      Item: 20,
 //  }
@@ -41,7 +24,7 @@ type GetModeration struct {
 //  }
 //
 //  fmt.Printf("Moderation: %#v\n", list)
-//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//  fmt.Printf("First element: %#v\n", list.Data[0].Attributes)
 //
 type GetModerations struct {
 	ID   string
@@ -51,26 +34,21 @@ type GetModerations struct {
 
 // Example:
 //
-//  imgData, post := &posmoni.PostModeration{}, &actions.PostModeration{
+//  data, post := &posmoni.PostModeration{}, &actions.PostModeration{
 //		Data: TestImageDataURL,
 //  }
 //
-//  if err := client.Call(imgData, post); err != nil {
+//  if err := client.Call(data, post); err != nil {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Moderation: %#v\n", imgData)
+//  fmt.Printf("Element: %#v\n", data.Data.Attributes)
 //
 type PostModeration struct {
 	Data           string
 	PostbackURL    string
 	PostbackMethod string
 	CustomID       string
-}
-
-// Endpoint returns Posmoni's request url, verb and endpoint for calling GET Moderation API.
-func (g *GetModeration) Endpoint() (string, string, string) {
-	return config.PosmoniAPIURL, "GET", ModerationPath
 }
 
 // Endpoint returns Posmoni's request url, verb and endpoint for calling Get list of
@@ -83,21 +61,6 @@ func (g *GetModerations) Endpoint() (string, string, string) {
 // Moderation API.
 func (p *PostModeration) Endpoint() (string, string, string) {
 	return config.PosmoniAPIURL, "POST", ModerationPath
-}
-
-// Payload creates request's payload for Get Moderation API. Returns http.Request
-// object which contains required query parameters.
-func (g *GetModeration) Payload(endpoint, method, path string) (*http.Request, error) {
-	req, err := http.NewRequest(method, string(endpoint)+path, nil)
-	if err != nil {
-		return nil, err
-	}
-	q := req.URL.Query()
-	if g.ID != "" {
-		q.Add("query", g.ID)
-	}
-	req.URL.RawQuery = q.Encode()
-	return req, nil
 }
 
 // Payload creates request's payload for Get list Moderation API. Returns

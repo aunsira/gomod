@@ -52,97 +52,70 @@ func TestNewClient_ErrorInvalidKey(t *testing.T) {
 	a.Nil(t, c)
 }
 
-func TestClient_CallGetClosedQuestion(t *testing.T) {
+func TestClient_CallGetListModeration(t *testing.T) {
 	defer gock.Off()
 	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
-	cq, getCQ := &GetModeration{}, &actions.GetModeration{
+	m, getM := &GetModerations{}, &actions.GetModerations{
 		ID: TestImageID,
 	}
 
-	endpoint, _, path := getCQ.Endpoint()
-	mockResp := readFile("./testdata/closed_question.json")
+	endpoint, _, path := getM.Endpoint()
+	mockResp := readFile("./testdata/moderations.json")
 	gock.New(endpoint).
 		Get(path).
 		Reply(200).
 		BodyString(string(mockResp))
 
-	e := c.Call(cq, getCQ)
+	e := c.Call(m, getM)
 	if !(a.NoError(t, e)) {
 		return
 	}
 
-	a.NotNil(t, cq)
-	a.NotNil(t, cq.Data.ID)
-	a.NotNil(t, cq.Data.Attributes.Answer)
-	a.Equal(t, getCQ.ID, cq.Data.ID)
+	a.NotNil(t, m)
+	a.NotNil(t, m.Data[0].ID)
+	a.NotNil(t, m.Data[0].Attributes.Answer)
+	a.Equal(t, getM.ID, m.Data[0].ID)
 }
 
-func TestClient_CallGetListClosedQuestion(t *testing.T) {
+func TestClient_CallPostModeration(t *testing.T) {
 	defer gock.Off()
 	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
-	cq, getCQ := &GetModerations{}, &actions.GetModerations{
-		ID: TestImageID,
-	}
-
-	endpoint, _, path := getCQ.Endpoint()
-	mockResp := readFile("./testdata/closed_questions.json")
-	gock.New(endpoint).
-		Get(path).
-		Reply(200).
-		BodyString(string(mockResp))
-
-	e := c.Call(cq, getCQ)
-	if !(a.NoError(t, e)) {
-		return
-	}
-
-	a.NotNil(t, cq)
-	a.NotNil(t, cq.Data[0].ID)
-	a.NotNil(t, cq.Data[0].Attributes.Answer)
-	a.Equal(t, getCQ.ID, cq.Data[0].ID)
-}
-
-func TestClient_CallPostClosedQuestion(t *testing.T) {
-	defer gock.Off()
-	c, _ := NewClient(TestProjectKey)
-	a.NotNil(t, c)
-
-	pq, postCQ := &PostModeration{}, &actions.PostModeration{
+	m, postM := &PostModeration{}, &actions.PostModeration{
 		Data: TestImageData,
 	}
 
-	endpoint, _, path := postCQ.Endpoint()
-	mockResp := readFile("./testdata/post_closed_question.json")
+	endpoint, _, path := postM.Endpoint()
+	mockResp := readFile("./testdata/post_moderation.json")
 	gock.New(endpoint).
 		Post(path).
 		Reply(200).
 		BodyString(string(mockResp))
 
-	e := c.Call(pq, postCQ)
+	e := c.Call(m, postM)
 	if !(a.NoError(t, e)) {
 		return
 	}
 
-	a.NotNil(t, pq)
-	a.Equal(t, postCQ.Data, pq.Data.Attributes.Source)
+	a.NotNil(t, m)
+	a.Equal(t, postM.Data, m.Data.Attributes.Source)
 }
 
 func TestClient_InvalidCall(t *testing.T) {
 	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
-	closedQuestion, getImage := &GetModeration{}, &actions.GetModeration{}
+	m, getM := &GetModerations{}, &actions.GetModerations{}
 
-	endpoint, _, path := getImage.Endpoint()
+	endpoint, _, path := getM.Endpoint()
 	gock.New(endpoint).
 		Get(path).
 		Reply(401)
 
-	e := c.Call(closedQuestion, getImage)
+	e := c.Call(m, getM)
 	a.EqualError(t, e, e.Error())
 }
 

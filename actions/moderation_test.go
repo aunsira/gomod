@@ -7,17 +7,6 @@ import (
 	a "github.com/stretchr/testify/assert"
 )
 
-func TestGetModerationEndpoint(t *testing.T) {
-	aiConsensus := &GetModeration{}
-	endpoint, method, path := aiConsensus.Endpoint()
-	a.NotNil(t, endpoint)
-	a.Equal(t, config.PosmoniAPIURL, endpoint)
-	a.NotNil(t, method)
-	a.Equal(t, "GET", method)
-	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/moderations", path)
-}
-
 func TestGetListModerationEndpoint(t *testing.T) {
 	aiConsensus := &GetModerations{}
 	endpoint, method, path := aiConsensus.Endpoint()
@@ -38,16 +27,6 @@ func TestPostModerationEndpoint(t *testing.T) {
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)
 	a.Equal(t, "/api/v1/moderations", path)
-}
-
-func TestGetModerationPayload(t *testing.T) {
-	g := &GetModeration{
-		ID: "5a44671ab3957c2ab5c33326",
-	}
-	endpoint, method, path := g.Endpoint()
-	req, _ := g.Payload(endpoint, method, path)
-	queryValues := req.URL.Query()
-	a.Equal(t, g.ID, queryValues.Get("query"))
 }
 
 func TestGetListModerationPayload(t *testing.T) {

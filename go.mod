@@ -3,7 +3,6 @@ module github.com/aunsira/gomod
 go 1.17
 
 require (
-	github.com/datawowio/k-sequencing-go v0.0.0-20190227041527-00aff8ef3659
 	github.com/stretchr/testify v1.7.0
 	gopkg.in/h2non/gock.v1 v1.1.2
 )
