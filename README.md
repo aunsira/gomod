@@ -27,7 +27,7 @@ const (
 )
 
 func main() {
-  createMod()
+	createMod()
 	getMod()
 }
 
