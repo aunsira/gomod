@@ -74,6 +74,8 @@ func TestClient_CallGetClosedQuestion(t *testing.T) {
 	}
 
 	a.NotNil(t, cq)
+	a.NotNil(t, cq.Data.ID)
+	a.NotNil(t, cq.Data.Attributes.Answer)
 	a.Equal(t, getCQ.ID, cq.Data.ID)
 }
 
@@ -99,6 +101,8 @@ func TestClient_CallGetListClosedQuestion(t *testing.T) {
 	}
 
 	a.NotNil(t, cq)
+	a.NotNil(t, cq.Data[0].ID)
+	a.NotNil(t, cq.Data[0].Attributes.Answer)
 	a.Equal(t, getCQ.ID, cq.Data[0].ID)
 }
 
